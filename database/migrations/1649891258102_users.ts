@@ -6,19 +6,20 @@ export default class Users extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table.string('secretId')
       table.string('email').unique().notNullable()
       table.string('name').notNullable()
       table.string('password').notNullable()
       table.string('number').notNullable()
       table.string('city').notNullable()
-      table.string('street').notNullable()
-      table.string('neighbourhood').notNullable()
+      table.string('street')
+      table.string('neighbourhood')
       table.string('state').notNullable()
       table.string('country').notNullable()
       table.boolean('isActive').defaultTo(1)
       table.boolean('isDisabled').defaultTo(0)
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
+      table.timestamp('createdAt', { useTz: true })
+      table.timestamp('updatedAt', { useTz: true })
     })
   }
 

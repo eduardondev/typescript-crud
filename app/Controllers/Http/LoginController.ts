@@ -6,6 +6,8 @@ export default class LoginController {
   public async createUser({ request, response }: HttpContextContract) {
     const body = request.body()
 
+    // return { body }
+
     const insertUser = await User.create(body)
 
     response.status(201)
@@ -16,7 +18,7 @@ export default class LoginController {
     }
   }
 
-  public async makeLogin({ auth, request, response }: HttpContextContract) {
+  public async makeLogin({ auth, request }: HttpContextContract) {
     const email = request.input('email')
     const password = request.input('password')
 
